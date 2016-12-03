@@ -102,7 +102,7 @@ in that column.</p>
   
     <div class="summary-synopsis"><p>Return a format string that hard codes the widths of a set of columns.
 We put <code class="inline">&quot; | &quot;</code> between each column.</p>
-<h2>Example</h2>
+<h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; widths = [5,6,99]
 iex&gt; Issues.TableFormatter.format_for(widths)
 &quot;~-5s | ~-6s | ~-99s~n&quot;</code></pre>
@@ -157,8 +157,8 @@ and a format string, write the extracted data under control of the format string
 hyphens, with + signs where the vertical bar between the columns goes.</p>
 <h2>Example</h2>
 <pre><code class="iex elixir">iex&gt; widths = [5,6,9]
-iex&gt; Issues.TableFormatter.separator(widths)</code></pre>
-<p>“———+————+—————“</p>
+iex&gt; Issues.TableFormatter.separator(widths)
+&quot;------+--------+----------&quot;</code></pre>
 </div>
   
 </div>
@@ -173,7 +173,7 @@ each column. The <code class="inline">headers</code> parameter contains the
 list of columns to extract</p>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; list = [Enum.into([{&quot;a&quot;, &quot;1&quot;},{&quot;b&quot;, &quot;2&quot;},{&quot;c&quot;, &quot;3&quot;}], %{}),
-    ...&gt;         Enum.into([{&quot;a&quot;, &quot;4&quot;},{&quot;b&quot;, &quot;5&quot;},{&quot;c&quot;, &quot;6&quot;}], %{})]
+    ...&gt;    Enum.into([{&quot;a&quot;, &quot;4&quot;},{&quot;b&quot;, &quot;5&quot;},{&quot;c&quot;, &quot;6&quot;}], %{})]
     iex&gt; Issues.TableFormatter.split_columns(list, [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
     [ [&quot;1&quot;, &quot;4&quot;], [&quot;2&quot;, &quot;5&quot;], [&quot;3&quot;, &quot;6&quot;] ]</code></pre>
 </div>
@@ -186,7 +186,7 @@ list of columns to extract</p>
   
     <div class="summary-synopsis"><p>Given a list containing sublists, where each sublist contains the data for
 a column, return a list containing the maximum width of each column</p>
-<h2>Example</h2>
+<h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; data = [ [ &quot;cat&quot;, &quot;wombat&quot;, &quot;elk&quot;], [&quot;mongoose&quot;, &quot;ant&quot;, &quot;gnu&quot;]]
 iex&gt; Issues.TableFormatter.widths_of(data)
 [ 6, 8 ]</code></pre>
@@ -232,9 +232,9 @@ iex&gt; Issues.TableFormatter.widths_of(data)
   <section class="docstring">
     <p>Return a format string that hard codes the widths of a set of columns.
 We put <code class="inline">&quot; | &quot;</code> between each column.</p>
-<h2 id="format_for/1-example" class="section-heading">
-  <a href="#format_for/1-example" class="hover-link"><i class="icon-link"></i></a>
-  Example
+<h2 id="format_for/1-examples" class="section-heading">
+  <a href="#format_for/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
 </h2>
 
 <pre><code class="iex elixir">iex&gt; widths = [5,6,99]
@@ -356,8 +356,8 @@ hyphens, with + signs where the vertical bar between the columns goes.</p>
 </h2>
 
 <pre><code class="iex elixir">iex&gt; widths = [5,6,9]
-iex&gt; Issues.TableFormatter.separator(widths)</code></pre>
-<p>“———+————+—————“</p>
+iex&gt; Issues.TableFormatter.separator(widths)
+&quot;------+--------+----------&quot;</code></pre>
 
   </section>
 </div>
@@ -387,7 +387,7 @@ list of columns to extract</p>
 </h2>
 
 <pre><code class="iex elixir">iex&gt; list = [Enum.into([{&quot;a&quot;, &quot;1&quot;},{&quot;b&quot;, &quot;2&quot;},{&quot;c&quot;, &quot;3&quot;}], %{}),
-    ...&gt;         Enum.into([{&quot;a&quot;, &quot;4&quot;},{&quot;b&quot;, &quot;5&quot;},{&quot;c&quot;, &quot;6&quot;}], %{})]
+    ...&gt;    Enum.into([{&quot;a&quot;, &quot;4&quot;},{&quot;b&quot;, &quot;5&quot;},{&quot;c&quot;, &quot;6&quot;}], %{})]
     iex&gt; Issues.TableFormatter.split_columns(list, [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
     [ [&quot;1&quot;, &quot;4&quot;], [&quot;2&quot;, &quot;5&quot;], [&quot;3&quot;, &quot;6&quot;] ]</code></pre>
 
@@ -411,9 +411,9 @@ list of columns to extract</p>
   <section class="docstring">
     <p>Given a list containing sublists, where each sublist contains the data for
 a column, return a list containing the maximum width of each column</p>
-<h2 id="widths_of/1-example" class="section-heading">
-  <a href="#widths_of/1-example" class="hover-link"><i class="icon-link"></i></a>
-  Example
+<h2 id="widths_of/1-examples" class="section-heading">
+  <a href="#widths_of/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
 </h2>
 
 <pre><code class="iex elixir">iex&gt; data = [ [ &quot;cat&quot;, &quot;wombat&quot;, &quot;elk&quot;], [&quot;mongoose&quot;, &quot;ant&quot;, &quot;gnu&quot;]]

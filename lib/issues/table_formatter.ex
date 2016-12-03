@@ -31,7 +31,7 @@ defmodule Issues.TableFormatter do
 	list of columns to extract
 	## Examples
 			iex> list = [Enum.into([{"a", "1"},{"b", "2"},{"c", "3"}], %{}),
-			...>         Enum.into([{"a", "4"},{"b", "5"},{"c", "6"}], %{})]
+			...>	Enum.into([{"a", "4"},{"b", "5"},{"c", "6"}], %{})]
 			iex> Issues.TableFormatter.split_columns(list, [ "a", "b", "c" ])
 			[ ["1", "4"], ["2", "5"], ["3", "6"] ]
 	"""
@@ -57,7 +57,7 @@ defmodule Issues.TableFormatter do
 	@doc """
 	Given a list containing sublists, where each sublist contains the data for
 	a column, return a list containing the maximum width of each column
-	## Example
+	## Examples
 		iex> data = [ [ "cat", "wombat", "elk"], ["mongoose", "ant", "gnu"]]
 		iex> Issues.TableFormatter.widths_of(data)
 		[ 6, 8 ]
@@ -73,7 +73,7 @@ defmodule Issues.TableFormatter do
 	@doc """
 	Return a format string that hard codes the widths of a set of columns.
 	We put `" | "` between each column.
-	## Example
+	## Examples
 		iex> widths = [5,6,99]
 		iex> Issues.TableFormatter.format_for(widths)
 		"~-5s | ~-6s | ~-99s~n"
@@ -90,7 +90,7 @@ defmodule Issues.TableFormatter do
 	## Example
 		iex> widths = [5,6,9]
 		iex> Issues.TableFormatter.separator(widths)
-	"------+--------+----------"
+		"------+--------+----------"
 	"""
 	def separator(column_widths) do
 		Enum.map_join(column_widths, "-+-", fn width->
