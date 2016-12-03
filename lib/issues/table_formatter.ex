@@ -10,8 +10,8 @@ defmodule Issues.TableFormatter do
 	"""
 	def print_table_columns(rows, headers) do
 		with data_by_columns = split_columns(rows, headers),
-			column_widths = widths_of(data_by_columns),
-			format = format_for(column_widths)
+		column_widths = widths_of(data_by_columns),
+		format = format_for(column_widths)
 		do
 			puts_one_line_in_columns(headers, format)
 			column_widths
@@ -22,89 +22,89 @@ defmodule Issues.TableFormatter do
 	end
 	
 	@doc """
-	  Given a list of rows, where each row contains a keyed list
-	  of columns, return a list containing lists of the data in
-	  each column. The `headers` parameter contains the
-	  list of columns to extract
+	Given a list of rows, where each row contains a keyed list
+	of columns, return a list containing lists of the data in
+	each column. The `headers` parameter contains the
+	list of columns to extract
 
-	  ## Example
+	## Example
 
-	      iex> list = [Enum.into([{"a", "1"},{"b", "2"},{"c", "3"}], %{}),
-	      ...>         Enum.into([{"a", "4"},{"b", "5"},{"c", "6"}], %{})]
-	      iex> Issues.TableFormatter.split_columns(list, [ "a", "b", "c" ])
-	      [ ["1", "4"], ["2", "5"], ["3", "6"] ]
+	iex> list = [Enum.into([{"a", "1"},{"b", "2"},{"c", "3"}], %{}),
+	...>         Enum.into([{"a", "4"},{"b", "5"},{"c", "6"}], %{})]
+	iex> Issues.TableFormatter.split_columns(list, [ "a", "b", "c" ])
+	[ ["1", "4"], ["2", "5"], ["3", "6"] ]
 
-	  """
+	"""
 	def split_columns(rows, headers) do
-			for header <- headers do
+		for header <- headers do
 			for row <- rows, do: printable(row[header])
 		end
-	# for header <- headers, row <- rows, do:
-	# 	printable(row[header])
+		# for header <- headers, row <- rows, do:
+		# 	printable(row[header])
 	end
 
-  @doc """
-  Return a binary (string) version of our parameter.
-  ## Examples
-      iex> Issues.TableFormatter.printable("a")
-      "a"
-      iex> Issues.TableFormatter.printable(99)
-      "99"
-  """
+	@doc """
+	Return a binary (string) version of our parameter.
+	## Examples
+	iex> Issues.TableFormatter.printable("a")
+	"a"
+	iex> Issues.TableFormatter.printable(99)
+	"99"
+	"""
 	def printable(str) when is_binary(str), do: str
 	def printable(str), do: to_string(str)
 	
 	@doc """
-	  Given a list containing sublists, where each sublist contains the data for
-	  a column, return a list containing the maximum width of each column
+	Given a list containing sublists, where each sublist contains the data for
+	a column, return a list containing the maximum width of each column
 
-	  ## Example
-	      iex> data = [ [ "cat", "wombat", "elk"], ["mongoose", "ant", "gnu"]]
-	      iex> Issues.TableFormatter.widths_of(data)
-	      [ 6, 8 ]
-	  """
+	## Example
+	iex> data = [ [ "cat", "wombat", "elk"], ["mongoose", "ant", "gnu"]]
+	iex> Issues.TableFormatter.widths_of(data)
+	[ 6, 8 ]
+	"""
 	def widths_of(columns) do
 		# IO.inspect columns
 		for column <- columns, do:
-			column
-			|> Enum.map(&String.length/1)
-			|> Enum.max
+		column
+		|> Enum.map(&String.length/1)
+		|> Enum.max
 	end
 
-  @doc """
-  Return a format string that hard codes the widths of a set of columns.
-  We put `" | "` between each column.
+	@doc """
+	Return a format string that hard codes the widths of a set of columns.
+	We put `" | "` between each column.
 
-  ## Example
-      iex> widths = [5,6,99]
-      iex> Issues.TableFormatter.format_for(widths)
-      "~-5s | ~-6s | ~-99s~n"
-  """
+	## Example
+	iex> widths = [5,6,99]
+	iex> Issues.TableFormatter.format_for(widths)
+	"~-5s | ~-6s | ~-99s~n"
+	"""
 	def format_for(column_widths) do
 		Enum.map_join(column_widths, " / ", fn width ->
 			"~-#{width}s"
 		end) <> "~n"
 	end
 
-  @doc """
-  Generate the line that goes below the column headings. It is a string of
-  hyphens, with + signs where the vertical bar between the columns goes.
+	@doc """
+	Generate the line that goes below the column headings. It is a string of
+	hyphens, with + signs where the vertical bar between the columns goes.
 
-  ## Example
-        iex> widths = [5,6,9]
-        iex> Issues.TableFormatter.separator(widths)
-        "------+--------+----------"
-  """
+	## Example
+	iex> widths = [5,6,9]
+	iex> Issues.TableFormatter.separator(widths)
+	"------+--------+----------"
+	"""
 	def separator(column_widths) do
 		Enum.map_join(column_widths, "-+-", fn width->
 			List.duplicate("-", width)
 		end)
 	end
 
-  @doc """
-  Given a list containing rows of data, a list containing the header selectors,
-  and a format string, write the extracted data under control of the format string.
-  """
+	@doc """
+	Given a list containing rows of data, a list containing the header selectors,
+	and a format string, write the extracted data under control of the format string.
+	"""
 	def put_columns(data_by_columns, format) do
 		data_by_columns
 		|> List.zip
