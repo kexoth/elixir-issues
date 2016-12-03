@@ -70,9 +70,9 @@
 
       
         <section id="moduledoc">
-          <p>Handle the command line parsing and the dispatch to
+          <pre><code class="elixir">Handle the command line parsing and the dispatch to
 the various functions that end up generating a 
-table of the last <em>n</em> issues in a github project</p>
+table of the last _n_ issues in a github project</code></pre>
 
         </section>
       
@@ -154,7 +154,7 @@ table of the last <em>n</em> issues in a github project</p>
     </a>
     <span class="signature">decode_response(arg)</span>
     
-      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L45" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L44" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -192,7 +192,7 @@ table of the last <em>n</em> issues in a github project</p>
     </a>
     <span class="signature">parse_args(argv)</span>
     
-      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L27" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L26" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -200,10 +200,11 @@ table of the last <em>n</em> issues in a github project</p>
     
   </div>
   <section class="docstring">
-    <p><code class="inline">argv</code> can be -h or —help, which returns :help.</p>
-<p>Otherwise it is a github user name, project name, and (optionally)
-the number of entries to format.</p>
-<p>Return a tuple of <code class="inline">{ user, project, count }</code>, or <code class="inline">:help</code> if help was given.</p>
+    <pre><code class="elixir">`argv` can be -h or --help, which returns :help.
+
+Otherwise it is a github user name, project name, and (optionally) the number of entries to format.
+
+Return a tuple of `{ user, project, count }`, or `:help` if help was given.</code></pre>
 
   </section>
 </div>
@@ -215,7 +216,7 @@ the number of entries to format.</p>
     </a>
     <span class="signature">process(arg1)</span>
     
-      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L57" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -234,7 +235,7 @@ the number of entries to format.</p>
     </a>
     <span class="signature">sort_asc(issues)</span>
     
-      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/kexoth/elixir-issues/blob/master/lib/issues/cli.ex#L51" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
